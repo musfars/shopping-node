@@ -5,6 +5,7 @@ module.exports = showProducts = (callback,min_price,max_price,limit_value) => {
   // price : (min_price) ?{$gte:parseInt(min_price) }:{}+','+(max_price) ?{$gte:parseInt(max_price)}:{}
   // };
   // console.log("Criteria",criteria);
+  console.log("GET SERVICE");
   console.log("min==>",min_price);
   console.log("max==>",max_price);
   ProductList.find(
