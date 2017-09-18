@@ -7,9 +7,19 @@ module.exports = function(req,res){
     price:req.body.price,
     quantity:req.body.quantity
   };
+  if(typeof a.productId == 'undefined' || typeof a.name == 'undefined' || typeof a.price == 'undefined' || typeof a.quantity == 'undefined'){
+      res.json({
+        status:422,
+        error: 'Parameter not present'
+      })
+      return;
+    }
   CartList.addToCart(a,(err,cartProducts) => {
     if(err){
-      res.send(err);
+      res.status(400).send({
+        status:422,
+        error:'Parameters required'
+      });
     }
     var result = {
       status:200,
