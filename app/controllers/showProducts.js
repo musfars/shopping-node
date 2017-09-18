@@ -12,13 +12,14 @@ module.exports = function (req,res){
     return;
   }
 
-
+  res.header("Access-Control-Allow-Origin", "*");
   console.log("MIN ->",min_price);
   console.log("MAX ->",max_price);
   ProductList((err,products) => {
     console.log("GET CONTROLLER");
     if(err){
       res.status(400).send(err);
+      return;
     }
     var result = {
       status:200,

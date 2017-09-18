@@ -14,12 +14,14 @@ module.exports = function(req,res){
       })
       return;
     }
+  res.header("Access-Control-Allow-Origin", "*");  
   CartList.addToCart(a,(err,cartProducts) => {
     if(err){
       res.status(400).send({
         status:422,
         error:'Parameters required'
       });
+      return;
     }
     var result = {
       status:200,
